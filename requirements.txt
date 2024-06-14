@@ -2,7 +2,4 @@ transformers
 fastapi
 uvicorn
 tensorflow
-httpx
-pytest
-pytest-asyncio
 tf-keras
