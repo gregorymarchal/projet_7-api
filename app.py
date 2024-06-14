@@ -5,7 +5,7 @@ import tensorflow as tf
 
 app = FastAPI()
 
-model_name = "username/your-model-name"
+model_name = "gregorymarchal/projet-7-trained-distilbert"
 model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
