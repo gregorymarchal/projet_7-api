@@ -1,5 +1,2 @@
-transformers
 fastapi
 uvicorn
-tensorflow
-tf-keras
