@@ -15,6 +15,3 @@ def predict():
     outputs = model(inputs)
     predictions = tf.argmax(outputs.logits, axis=-1).numpy().tolist()
     return jsonify(predictions)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
