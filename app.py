@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import tensorflow as tf
 from transformers import TFAutoModelForSequenceClassification, AutoTokenizer
 
 app = Flask(__name__)
