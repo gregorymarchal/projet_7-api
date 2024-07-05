@@ -15,8 +15,8 @@ This repository contains a simple Flask API for text classification using a pre-
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/text-classification-api.git
-    cd text-classification-api
+    git clone https://github.com/gregorymarchal/projet_7-api.git
+    cd projet_7-api
     ```
 
 2. Create a virtual environment and activate it:
