@@ -10,9 +10,10 @@ This repository contains a Flask application that uses a Hugging Face model for 
 
 ## Requirements
 
-- Python 3.6+
+- Python 3.7+
 - Flask
 - TensorFlow
+- tf-keras
 - transformers (Hugging Face library)
 - unittest (Python standard library)
 
@@ -77,7 +78,3 @@ The tests will check the `/predict` endpoint to ensure it returns the correct st
 ## Deployment on Azure
 
 When deploying to Azure WebApp, ensure that the `app.py` file is set up correctly. Azure WebApp will use the `app` instance to run the application.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
