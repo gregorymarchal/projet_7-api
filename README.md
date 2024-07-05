@@ -1,6 +1,3 @@
-# projet_7-api
-AI Engineer Path: Project 7: Azure API
-
 # Text Classification API
 
 This repository contains a simple Flask API for text classification using a pre-trained DistilBERT model from Hugging Face. The API accepts text input via a POST request and returns the predicted class.
