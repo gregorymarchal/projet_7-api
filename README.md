@@ -20,7 +20,7 @@ This project is a Flask application that uses a pre-trained TensorFlow model for
 2. Create a virtual environment and activate it:
     ```sh
     python3 -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    source venv/bin/activate
     ```
 
 3. Install the required packages:
@@ -30,9 +30,9 @@ This project is a Flask application that uses a pre-trained TensorFlow model for
 
 ### Running the Application
 
-1. Set up the Azure Application Insights connection string in `app.py`:
-    ```python
-    connection_string = "InstrumentationKey=your_instrumentation_key;IngestionEndpoint=your_ingestion_endpoint"
+1. Set up the Azure Application Insights connection string in your environment:
+    ```sh
+    CONNECTION_STRING = "InstrumentationKey=<your_instrumentation_key>;IngestionEndpoint=<your_ingestion_endpoint>"
     ```
 
 2. Run the Flask application:
@@ -57,7 +57,8 @@ This endpoint accepts a JSON payload with a `text` field and returns the predict
 
 - **Response:**
     ```json
-    [0]
+    [0] (if negative prediction)
+    [1] (if positive prediction)
     ```
 
 #### POST /feedback
@@ -67,8 +68,9 @@ This endpoint accepts user feedback and logs it to Azure Application Insights.
 - **Request:**
     ```json
     {
-        "user_id": "12345",
-        "feedback": "This is a feedback message."
+        "text_input": "Sample text for prediction",
+        "predicted_sentiment": "negatif OU positif"
+        "feedback": "Non"
     }
     ```
 
