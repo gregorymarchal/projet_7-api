@@ -1,6 +1,6 @@
 # Import necessary modules from Flask and TensorFlow, and Hugging Face's Transformers library
-from flask import Flask, request, jsonify
 import os
+from flask import Flask, request, jsonify
 import tensorflow as tf
 from transformers import TFAutoModelForSequenceClassification, AutoTokenizer
 import logging
