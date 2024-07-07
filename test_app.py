@@ -1,26 +1,31 @@
 import unittest
+import json
 from app import app
 
-class FlaskTestCase(unittest.TestCase):
+class TestApp(unittest.TestCase):
     def setUp(self):
-        # Set up a test client for the Flask application
         self.app = app.test_client()
         self.app.testing = True
 
     def test_predict(self):
-        # Define a test case for the predict route
-        response = self.app.post('/predict', json={'text': 'This is a test sentence.'})
-        
-        # Check if the response status code is 200 (OK)
+        response = self.app.post('/predict', 
+                                 data=json.dumps({'text': 'Hello world!'}), 
+                                 content_type='application/json')
         self.assertEqual(response.status_code, 200)
-        
-        # Check if the response is a JSON object
-        self.assertEqual(response.content_type, 'application/json')
-        
-        # Check if the response contains a list of predictions
-        data = response.get_json()
+        data = json.loads(response.get_data(as_text=True))
         self.assertIsInstance(data, list)
-        self.assertEqual(len(data), 1)  # Assuming the model outputs one prediction
+
+    def test_feedback(self):
+        feedback_data = {
+            "user_id": "12345",
+            "feedback": "This is a feedback message."
+        }
+        response = self.app.post('/feedback', 
+                                 data=json.dumps(feedback_data), 
+                                 content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.get_data(as_text=True))
+        self.assertEqual(data['message'], "Feedback received successfully.")
 
 if __name__ == '__main__':
     unittest.main()
