@@ -13,8 +13,8 @@ This project is a Flask application that uses a pre-trained TensorFlow model for
 
 1. Clone the repository:
     ```sh
-    git clone <repository_url>
-    cd <repository_directory>
+    git clone https://github.com/gregorymarchal/projet_7-api.git
+    cd projet_7-api
     ```
 
 2. Create a virtual environment and activate it:
