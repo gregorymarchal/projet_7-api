@@ -47,7 +47,7 @@ def feedback():
     feedback_data = request.json
     
     # Log the feedback data to Azure Application Insights
-    logger.warning("User feedback", extra=feedback_data)
+    logger.warning("User feedback", extra={"custom_dimensions": feedback_data})
     
     # Return a success message
     return jsonify({"message": "Feedback received successfully."}), 200
