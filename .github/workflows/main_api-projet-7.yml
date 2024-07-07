@@ -65,3 +65,5 @@ jobs:
           app-name: 'api-projet-7'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_00D52C02D82548B1B432F0EB32A75928 }}
+        env:
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
