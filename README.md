@@ -1,80 +1,86 @@
+# Flask TensorFlow Prediction API
 
-# Flask Application with Hugging Face Model and Unit Tests
+This project is a Flask application that uses a pre-trained TensorFlow model for sequence classification and provides endpoints for predictions and feedback.
 
-This repository contains a Flask application that uses a Hugging Face model for sequence classification. The application provides a `/predict` endpoint to perform predictions based on input text. Additionally, unit tests are included to ensure the functionality of the application.
+## Setup
 
-## Files
+### Prerequisites
 
-- `app.py`: Contains the Flask application code.
-- `test_app.py`: Contains the unit tests for the Flask application.
+- Python 3.6 or higher
+- `pip` (Python package installer)
 
-## Requirements
+### Install Dependencies
 
-- Python 3.7+
-- Flask
-- TensorFlow
-- tf-keras
-- transformers (Hugging Face library)
-- unittest (Python standard library)
+1. Clone the repository:
+    ```sh
+    git clone <repository_url>
+    cd <repository_directory>
+    ```
 
-## Installation
+2. Create a virtual environment and activate it:
+    ```sh
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-1. **Clone the repository:**
+3. Install the required packages:
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-   ```sh
-   git clone https://github.com/gregorymarchal/projet_7-api.git
-   cd projet_7-api
-   ```
+### Running the Application
 
-2. **Create and activate a virtual environment:**
+1. Set up the Azure Application Insights connection string in `app.py`:
+    ```python
+    connection_string = "InstrumentationKey=your_instrumentation_key;IngestionEndpoint=your_ingestion_endpoint"
+    ```
 
-   ```sh
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
+2. Run the Flask application:
+    ```sh
+    python app.py
+    ```
 
-3. **Install the required packages:**
+The application will be available at `http://127.0.0.1:5000`.
 
-   ```sh
-   pip install -r requirements.txt
-   ```
+### Endpoints
 
-   There is a `requirements.txt` file, but you can also install the dependencies manually:
+#### POST /predict
 
-   ```sh
-   pip install flask tensorflow transformers
-   ```
+This endpoint accepts a JSON payload with a `text` field and returns the prediction result.
 
-## Running the Application
+- **Request:**
+    ```json
+    {
+        "text": "Sample text for prediction"
+    }
+    ```
 
-To run the Flask application locally, use the following command:
+- **Response:**
+    ```json
+    [0]
+    ```
 
-```sh
-python app.py
-```
+#### POST /feedback
 
-By default, the application will be accessible at `http://127.0.0.1:5000`.
+This endpoint accepts user feedback and logs it to Azure Application Insights.
 
-## Using the `/predict` Endpoint
+- **Request:**
+    ```json
+    {
+        "user_id": "12345",
+        "feedback": "This is a feedback message."
+    }
+    ```
 
-The `/predict` endpoint accepts POST requests with a JSON payload containing the text to be classified. Example:
+- **Response:**
+    ```json
+    {
+        "message": "Feedback received successfully."
+    }
+    ```
 
-```sh
-curl -X POST http://127.0.0.1:5000/predict -H "Content-Type: application/json" -d '{"text": "This is a test sentence."}'
-```
-
-The response will be a JSON array containing the predicted class.
-
-## Running the Unit Tests
+### Running Tests
 
 To run the unit tests, use the following command:
-
 ```sh
 python -m unittest test_app.py
-```
-
-The tests will check the `/predict` endpoint to ensure it returns the correct status code, content type, and response structure.
-
-## Deployment on Azure
-
-When deploying to Azure WebApp, ensure that the `app.py` file is set up correctly. Azure WebApp will use the `app` instance to run the application.
