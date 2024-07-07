@@ -32,7 +32,7 @@ This project is a Flask application that uses a pre-trained TensorFlow model for
 
 1. Set up the Azure Application Insights connection string in your environment:
     ```sh
-    CONNECTION_STRING = "InstrumentationKey=<your_instrumentation_key>;IngestionEndpoint=<your_ingestion_endpoint>"
+    CONNECTION_STRING="InstrumentationKey=<your_instrumentation_key>;IngestionEndpoint=<your_ingestion_endpoint>"
     ```
 
 2. Run the Flask application:
