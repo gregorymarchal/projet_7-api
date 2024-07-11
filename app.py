@@ -52,7 +52,3 @@ def feedback():
     
     # Return a success message
     return jsonify({"message": "Feedback received successfully."}), 200
-
-# If this script is run directly, start the Flask application
-if __name__ == '__main__':
-    app.run(debug=True)
