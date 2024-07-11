@@ -32,15 +32,15 @@ This project is a Flask application that uses a pre-trained TensorFlow model for
 
 1. Set up the Azure Application Insights connection string in your environment:
     ```sh
-    CONNECTION_STRING="InstrumentationKey=<your_instrumentation_key>;IngestionEndpoint=<your_ingestion_endpoint>"
+    CONNECTION_STRING="InstrumentationKey=<your_connection_string>"
     ```
 
 2. Run the Flask application:
     ```sh
-    python app.py
+    gunicorn app:app
     ```
 
-The application will be available at `http://127.0.0.1:5000`.
+The application will be available at `http://localhost:8000`.
 
 ### Endpoints
 
@@ -85,4 +85,4 @@ This endpoint accepts user feedback and logs it to Azure Application Insights.
 
 To run the unit tests, use the following command:
 ```sh
-python -m unittest test_app.py
+python3 -m unittest test_app.py
