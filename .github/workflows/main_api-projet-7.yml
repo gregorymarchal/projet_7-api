@@ -32,7 +32,7 @@ jobs:
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Run tests
-        run: python -m unittest test_app.py
+        run: python -m unittest discover
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
